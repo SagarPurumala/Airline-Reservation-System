@@ -1,4 +1,4 @@
-package com.capgemini.airlinereservationsystem.config;
+package com.jfsfeb.airlinereservationsystemspringboot.config;
 
 import org.springframework.context.annotation.Configuration;
 

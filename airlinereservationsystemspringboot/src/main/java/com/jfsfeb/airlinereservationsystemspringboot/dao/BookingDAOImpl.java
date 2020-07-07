@@ -12,7 +12,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightBooking;
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightDetails;
 
 @Repository
 public class BookingDAOImpl implements BookingDAO {
@@ -29,7 +29,7 @@ public class BookingDAOImpl implements BookingDAO {
 		//boolean isAdded = false;
 		tx.begin();
 		
-		FlightInformation flightInfo = manager.find(FlightInformation.class, flightBooking.getFlightNo());
+		FlightDetails flightInfo = manager.find(FlightDetails.class, flightBooking.getFlightNo());
 		
 		int bussinessClassSeats = flightInfo.getBussinessClassSeats();
 		int firstClassSeats = flightInfo.getFirstClassSeats();
@@ -107,7 +107,7 @@ public class BookingDAOImpl implements BookingDAO {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ars");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		FlightInformation flightInfo = new FlightInformation();
+		FlightDetails flightInfo = new FlightDetails();
 		FlightBooking flightBooked = new FlightBooking();
 		flightBooked = entityManager.find(FlightBooking.class, bookingId);
 		String flightNo = flightBooked.getFlightNo();
@@ -126,7 +126,7 @@ public class BookingDAOImpl implements BookingDAO {
 
 			isDeleted = true;
 			if (isDeleted) {
-				flightInfo = entityManager.find(FlightInformation.class, flightNo);
+				flightInfo = entityManager.find(FlightDetails.class, flightNo);
 				int firstClass = flightInfo.getFirstClassSeats();
 				System.err.println(firstClass);
 				int bussiness = flightInfo.getBussinessClassSeats();

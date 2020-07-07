@@ -1,4 +1,4 @@
-package com.capgemini.airlinereservationsystem;
+package com.jfsfeb.airlinereservationsystemspringboot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

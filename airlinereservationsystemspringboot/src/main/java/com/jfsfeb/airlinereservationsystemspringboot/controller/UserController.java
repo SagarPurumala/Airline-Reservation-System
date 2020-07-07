@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jfsfeb.airlinereservationsystemspringboot.beans.UserBean;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.UserDetails;
 import com.jfsfeb.airlinereservationsystemspringboot.response.AirlineResponse;
 import com.jfsfeb.airlinereservationsystemspringboot.service.UserService;
 
@@ -20,7 +20,7 @@ public class UserController {
 	AirlineResponse response = new AirlineResponse();
 	
 	@PostMapping("/registerUser")
-	public AirlineResponse registerUser(@RequestBody UserBean userBean) {
+	public AirlineResponse registerUser(@RequestBody UserDetails userBean) {
 		boolean isAdded = service.registerUser(userBean);
 		if(isAdded) {
 			response.setStatus(200);
@@ -34,7 +34,7 @@ public class UserController {
 	
 
 	@PostMapping("/registerByAdmin")
-	public AirlineResponse registerByAdmin(@RequestBody UserBean userBean) {
+	public AirlineResponse registerByAdmin(@RequestBody UserDetails userBean) {
 		boolean isAdded = service.registerByAdmin(userBean);
 		if(isAdded) {
 			response.setStatus(200);
@@ -47,10 +47,10 @@ public class UserController {
 	}//end of register
 	
 	@PostMapping("/userLogin")
-	public AirlineResponse userLogin(@RequestBody UserBean userBean) {
+	public AirlineResponse userLogin(@RequestBody UserDetails userBean) {
 		String userId = userBean.getUserId();
 		String userPassword = userBean.getUserPassword();			
-		UserBean userBean2 = service.userLogin(userId, userPassword);
+		UserDetails userBean2 = service.userLogin(userId, userPassword);
 		String role = userBean2.getUserRole();
 		String getUserId = userBean2.getUserId();
 		if(role.equals("user")) {
@@ -62,11 +62,6 @@ public class UserController {
 			response.setStatus(200);
 			response.setMessage("Success");
 			response.setRole(role);	
-			response.setUserId(getUserId);
-		}else if(role.equals("exe")) {
-			response.setStatus(200);
-			response.setMessage("Success");
-			response.setRole(role);
 			response.setUserId(getUserId);
 		}else {
 			response.setStatus(400);

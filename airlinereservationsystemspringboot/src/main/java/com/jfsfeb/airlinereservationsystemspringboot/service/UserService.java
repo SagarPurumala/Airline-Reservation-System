@@ -1,13 +1,13 @@
 package com.jfsfeb.airlinereservationsystemspringboot.service;
 
-import com.jfsfeb.airlinereservationsystemspringboot.beans.UserBean;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.UserDetails;
 
 public interface UserService {
 
-	public boolean registerUser(UserBean userBean);
+	public boolean registerUser(UserDetails userBean);
 
-	public UserBean userLogin(String userId, String userPassword);
+	public UserDetails userLogin(String userId, String userPassword);
 	
-	public boolean registerByAdmin(UserBean userBean);
+	public boolean registerByAdmin(UserDetails userBean);
 
 }

@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import com.jfsfeb.airlinereservationsystemspringboot.beans.AirportBeans;
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightDetails;
 
 @Repository
 public class FlightDAOJpaImpl implements FlightDAO {
@@ -23,15 +23,15 @@ public class FlightDAOJpaImpl implements FlightDAO {
 	List<AirportBeans> airportList = new ArrayList<AirportBeans>();
 
 	@Override
-	public FlightInformation getFlight(String flightNumber) {
+	public FlightDetails getFlight(String flightNumber) {
 		EntityManager manager = emf.createEntityManager();
-		FlightInformation flightInformation = manager.find(FlightInformation.class, flightNumber);
+		FlightDetails flightInformation = manager.find(FlightDetails.class, flightNumber);
 		manager.close();
 		return flightInformation;
 	}
 
 	@Override
-	public boolean addFlight(FlightInformation flightInformation) {
+	public boolean addFlight(FlightDetails flightInformation) {
 
 		getAllAirport();
 		EntityManager manager = emf.createEntityManager();
@@ -70,14 +70,14 @@ public class FlightDAOJpaImpl implements FlightDAO {
 	}
 
 	@Override
-	public boolean updateFlight(FlightInformation flightInformation) {
+	public boolean updateFlight(FlightDetails flightInformation) {
 		EntityManager manager = emf.createEntityManager();
 		EntityTransaction tx = manager.getTransaction();
 
 		boolean isUpdated = false;
 		try {
 			tx.begin();
-			FlightInformation flightInfo = manager.find(FlightInformation.class, flightInformation.getFlightNumber());
+			FlightDetails flightInfo = manager.find(FlightDetails.class, flightInformation.getFlightNumber());
 
 			if (flightInfo != null) {
 				if (flightInformation.getDepartureDate() != null && flightInformation.getDepartureTime() != null) {
@@ -114,7 +114,7 @@ public class FlightDAOJpaImpl implements FlightDAO {
 	@Override
 	public boolean deleteFlight(String flightNumber) {
 		EntityManager entityManager = emf.createEntityManager();
-		FlightInformation flightInformation = entityManager.find(FlightInformation.class, flightNumber);
+		FlightDetails flightInformation = entityManager.find(FlightDetails.class, flightNumber);
 		boolean isDeleted = false;
 
 		try {
@@ -134,14 +134,14 @@ public class FlightDAOJpaImpl implements FlightDAO {
 
 	// Search Flight details...
 	@Override
-	public List<FlightInformation> search(String departureCity, String arrivalCity, String departureDate) {
+	public List<FlightDetails> searchFlight(String departureCity, String arrivalCity) {
 		EntityManager manager = emf.createEntityManager();
-		String jpql = "from FlightInformation where departureCity = :departure and arrivalCity = :arrival and departureDate= :date";
+		String jpql = "from FlightDetails where departureCity = :departure and arrivalCity = :arrival";
 		Query query = manager.createQuery(jpql);
 		query.setParameter("departure", departureCity);
 		query.setParameter("arrival", arrivalCity);
-		query.setParameter("date", departureDate);
-		List<FlightInformation> flightList = null;
+		
+		List<FlightDetails> flightList = null;
 		try {
 			flightList = query.getResultList();
 		} catch (Exception e) {
@@ -151,12 +151,12 @@ public class FlightDAOJpaImpl implements FlightDAO {
 	}
 
 	@Override
-	public List<FlightInformation> getAllFlights() {
+	public List<FlightDetails> getAllFlights() {
 		EntityManager manager = emf.createEntityManager();
-		String jpql = "from FlightInformation";
+		String jpql = "from FlightDetails";
 		Query query = manager.createQuery(jpql);
 
-		List<FlightInformation> flightList = null;
+		List<FlightDetails> flightList = null;
 		try {
 			flightList = query.getResultList();
 
@@ -170,7 +170,6 @@ public class FlightDAOJpaImpl implements FlightDAO {
 	@Override
 	public List<AirportBeans> getAllAirport() {
 		EntityManager manager = emf.createEntityManager();
-		EntityTransaction tx = manager.getTransaction();
 		Query query = manager.createQuery("FROM AirportBeans");
 		airportList = query.getResultList();
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightDetails;
 import com.jfsfeb.airlinereservationsystemspringboot.response.FlightResponse;
 import com.jfsfeb.airlinereservationsystemspringboot.service.FlightService;
 
@@ -24,7 +24,7 @@ public class FlightController {
 	@GetMapping("/getFlight")
 	public FlightResponse getFlight(String flightNumber) {
 
-		FlightInformation flightInformation = service.getFlight(flightNumber);
+		FlightDetails flightInformation = service.getFlight(flightNumber);
 		FlightResponse response = new FlightResponse();
 		if (flightInformation != null) {
 			response.setStatusCode(210);
@@ -62,12 +62,12 @@ public class FlightController {
 	}
 
 	@PutMapping(path = "/updateFlight")
-	public boolean updateFlight(@RequestBody FlightInformation flightInformation) {
+	public boolean updateFlight(@RequestBody FlightDetails flightInformation) {
 		return service.updateFlight(flightInformation);
 	}
 
 	@PostMapping("/addFlight")
-	public FlightResponse addFlight(@RequestBody FlightInformation flightInformation) {
+	public FlightResponse addFlight(@RequestBody FlightDetails flightInformation) {
 		boolean isAdded = service.addFlight(flightInformation);
 
 		FlightResponse response = new FlightResponse();
@@ -86,11 +86,11 @@ public class FlightController {
 	}
 
 	@PostMapping("/searchFlight")
-	public FlightResponse searchFlight(@RequestBody FlightInformation flightInformation) {
+	public FlightResponse searchFlight(@RequestBody FlightDetails flightInformation) {
 		String departureCity = flightInformation.getDepartureCity();
 		String arrivalCity = flightInformation.getArrivalCity();
-		String departureDate = flightInformation.getDepartureDate();
-		List<FlightInformation> searchFlight = service.search(departureCity, arrivalCity, departureDate);
+		
+		List<FlightDetails> searchFlight = service.searchFlight(departureCity, arrivalCity);
 
 		FlightResponse response = new FlightResponse();
 		if (searchFlight != null && !searchFlight.isEmpty()) {
@@ -111,7 +111,7 @@ public class FlightController {
 	@GetMapping("/getAll")
 	public FlightResponse getAllFlights() {
 
-		List<FlightInformation> flightList = service.getAllFlights();
+		List<FlightDetails> flightList = service.getAllFlights();
 
 		FlightResponse response = new FlightResponse();
 		if (flightList != null && !flightList.isEmpty()) {

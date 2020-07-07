@@ -3,7 +3,7 @@ package com.jfsfeb.airlinereservationsystemspringboot.response;
 import java.util.List;
 
 import com.jfsfeb.airlinereservationsystemspringboot.beans.AirportBeans;
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightDetails;
 
 public class AirportResponse {
 	

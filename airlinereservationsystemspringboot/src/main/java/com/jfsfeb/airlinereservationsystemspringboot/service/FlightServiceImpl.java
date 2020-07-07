@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightBooking;
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightDetails;
 import com.jfsfeb.airlinereservationsystemspringboot.dao.BookingDAO;
 import com.jfsfeb.airlinereservationsystemspringboot.dao.FlightDAO;
 
@@ -19,17 +19,17 @@ public class FlightServiceImpl implements FlightService {
 	private BookingDAO bookingDao;
 
 	@Override
-	public FlightInformation getFlight(String flightNumber) {
+	public FlightDetails getFlight(String flightNumber) {
 		return flightdao.getFlight(flightNumber);
 	}
 
 	@Override
-	public boolean addFlight(FlightInformation flightInformation) {
+	public boolean addFlight(FlightDetails flightInformation) {
 		return flightdao.addFlight(flightInformation);
 	}
 
 	@Override
-	public boolean updateFlight(FlightInformation flightInformation) {
+	public boolean updateFlight(FlightDetails flightInformation) {
 		return flightdao.updateFlight(flightInformation);
 	}
 
@@ -39,13 +39,13 @@ public class FlightServiceImpl implements FlightService {
 	}
 
 	@Override
-	public List<FlightInformation> search(String departureCity, String arrivalCity, String departureDate) {
+	public List<FlightDetails> searchFlight(String departureCity, String arrivalCity) {
 
-		return flightdao.search(departureCity, arrivalCity, departureDate);
+		return flightdao.searchFlight(departureCity, arrivalCity);
 	}
 
 	@Override
-	public List<FlightInformation> getAllFlights() {
+	public List<FlightDetails> getAllFlights() {
 		return flightdao.getAllFlights();
 	}
 

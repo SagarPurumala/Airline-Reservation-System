@@ -2,7 +2,7 @@ package com.jfsfeb.airlinereservationsystemspringboot.response;
 
 import java.util.List;
 
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightDetails;
 
 public class FlightResponse {
 	private int statusCode;
@@ -10,8 +10,8 @@ public class FlightResponse {
 	private String description;
 	private String bookingid;
 	private double totalFare;
-	private FlightInformation flightInformation;
-	private List<FlightInformation> searchFlight;
+	private FlightDetails flightInformation;
+	private List<FlightDetails> searchFlight;
 
 	
 	public double getTotalFare() {
@@ -54,19 +54,19 @@ public class FlightResponse {
 		this.description = description;
 	}
 
-	public FlightInformation getFlightInformation() {
+	public FlightDetails getFlightInformation() {
 		return flightInformation;
 	}
 
-	public void setFlightInformation(FlightInformation flightInformation) {
+	public void setFlightInformation(FlightDetails flightInformation) {
 		this.flightInformation = flightInformation;
 	}
 
-	public List<FlightInformation> getSearchFlight() {
+	public List<FlightDetails> getSearchFlight() {
 		return searchFlight;
 	}
 
-	public void setSearchFlight(List<FlightInformation> searchFlight) {
+	public void setSearchFlight(List<FlightDetails> searchFlight) {
 		this.searchFlight = searchFlight;
 	}
 

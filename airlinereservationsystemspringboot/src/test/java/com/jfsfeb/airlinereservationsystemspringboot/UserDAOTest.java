@@ -1,4 +1,4 @@
-package com.capgemini.airlinereservationsystem;
+package com.jfsfeb.airlinereservationsystemspringboot;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.jfsfeb.airlinereservationsystemspringboot.beans.UserBean;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.UserDetails;
 import com.jfsfeb.airlinereservationsystemspringboot.dao.UserDAO;
 
 @RunWith(SpringRunner.class)
@@ -23,7 +23,7 @@ public class UserDAOTest {
 	//@Ignore
 	@Test
 	public void registerTest() {
-		UserBean userBean = new UserBean();
+		UserDetails userBean = new UserDetails();
 		userBean.setUserFirstName("Sandeep");
 		userBean.setUserLastName("Tiwari");
 		userBean.setUserEmail("admin@gmail.com");

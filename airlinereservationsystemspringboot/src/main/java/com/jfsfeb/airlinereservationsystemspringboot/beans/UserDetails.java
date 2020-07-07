@@ -9,9 +9,11 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name = "user_Info")
-public class UserBean {
+public class UserDetails {
 
 	@Column(name = "first_name")
 	@Pattern(regexp = "[A-Za-z]*")
@@ -54,61 +56,5 @@ public class UserBean {
 	@Pattern(regexp = "[A-Za-z]*")
 	private String userRole;
 
-	// Getter and Setter
-	public String getUserFirstName() {
-		return userFirstName;
-	}
-
-	public void setUserFirstName(String userFirstName) {
-		this.userFirstName = userFirstName;
-	}
-
-	public String getUserLastName() {
-		return userLastName;
-	}
-
-	public void setUserLastName(String userLastName) {
-		this.userLastName = userLastName;
-	}
-
-	public String getUserEmail() {
-		return userEmail;
-	}
-
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-
-	public long getUserContact() {
-		return userContact;
-	}
-
-	public void setUserContact(long userContact) {
-		this.userContact = userContact;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getUserPassword() {
-		return userPassword;
-	}
-
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
-
-	public String getUserRole() {
-		return userRole;
-	}
-
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
-	}
 
 }

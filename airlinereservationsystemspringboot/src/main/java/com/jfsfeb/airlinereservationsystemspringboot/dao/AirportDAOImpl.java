@@ -9,7 +9,7 @@ import javax.persistence.PersistenceUnit;
 import org.springframework.stereotype.Repository;
 
 import com.jfsfeb.airlinereservationsystemspringboot.beans.AirportBeans;
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+
 
 @Repository
 public class AirportDAOImpl implements AirportDAO {

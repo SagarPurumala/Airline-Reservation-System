@@ -22,6 +22,7 @@ public class FlightBookingController {
 	@Autowired
 	private FlightService service;
 
+	@SuppressWarnings("unused")
 	@PostMapping("/bookFlight")
 	public FlightResponse bookFlight(@RequestBody FlightBooking flightBooking) {
 

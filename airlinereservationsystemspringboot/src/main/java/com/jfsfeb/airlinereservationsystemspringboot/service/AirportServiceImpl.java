@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jfsfeb.airlinereservationsystemspringboot.beans.AirportBeans;
-import com.jfsfeb.airlinereservationsystemspringboot.dao.AirlineExecutiveDAO;
+
 import com.jfsfeb.airlinereservationsystemspringboot.dao.AirportDAO;
 import com.jfsfeb.airlinereservationsystemspringboot.dao.FlightDAO;
 

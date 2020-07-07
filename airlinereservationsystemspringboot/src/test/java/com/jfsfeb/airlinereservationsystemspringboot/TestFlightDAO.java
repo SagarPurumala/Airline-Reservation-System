@@ -1,4 +1,4 @@
-package com.capgemini.airlinereservationsystem;
+package com.jfsfeb.airlinereservationsystemspringboot;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightInformation;
+import com.jfsfeb.airlinereservationsystemspringboot.beans.FlightDetails;
 import com.jfsfeb.airlinereservationsystemspringboot.dao.FlightDAO;
 
 @RunWith(SpringRunner.class)
@@ -21,7 +21,7 @@ public class TestFlightDAO {
 	@Test
 	public void addFlightTest() {
 
-		FlightInformation flightInformation = new FlightInformation();
+		FlightDetails flightInformation = new FlightDetails();
 		flightInformation.setFlightNumber("123ab");
 		flightInformation.setAirline("Indigo");
 		flightInformation.setDepartureTime("11:30 AM");
