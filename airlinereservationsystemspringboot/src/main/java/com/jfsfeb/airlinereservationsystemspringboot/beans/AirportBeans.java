@@ -3,7 +3,9 @@ package com.jfsfeb.airlinereservationsystemspringboot.beans;
 import javax.persistence.*;
 import javax.validation.constraints.Positive;
 
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "airport")
 public class AirportBeans {
@@ -31,44 +33,6 @@ public class AirportBeans {
 	//@Pattern(regexp = "{0-9}*")
 	private int zipCode;
 
-	public String getAbbreviation() {
-		return abbreviation;
-	}
-
-	public void setAbbreviation(String abbreviation) {
-		this.abbreviation = abbreviation;
-	}
-
-	public String getAirportName() {
-		return airportName;
-	}
-
-	public void setAirportName(String airportName) {
-		this.airportName = airportName;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
-	}
+	
 
 }

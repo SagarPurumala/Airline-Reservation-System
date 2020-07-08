@@ -5,9 +5,7 @@ import com.jfsfeb.airlinereservationsystemcollection.repository.AirlineRepositor
 
 public class AirlineMainController {
 	public static void main(String[] args) {
-		/*
-		 * To store some data calling Respository
-		 */
+		
 		AirlineRepository.addToDataBase();
 		SubAirlineMain.airlineOperations();
 	}

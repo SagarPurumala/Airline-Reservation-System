@@ -83,6 +83,7 @@ public class BookingDAOImpl implements BookingDAO {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<FlightBooking> getAllBooking(String userId) {
 		EntityManager manager = emf.createEntityManager();
