@@ -3,9 +3,11 @@ package com.jfsfeb.airlinereservationsystemspringboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,12 +47,13 @@ public class FlightBookingController {
 		return response;
 	}
 
-	@GetMapping("/getAllBooking")
-	public BookingResponse getAllBookingInfo(String userId) {
-		
+	@GetMapping(path = "/getAllBooking/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+
+	public BookingResponse getAllBookingInfo(@PathVariable("userId") String userId) {
+
 		List<FlightBooking> allBookingInfo = service.getAllBooking(userId);
 		BookingResponse response = new BookingResponse();
-		if (allBookingInfo != null) {
+		if (allBookingInfo != null&&!allBookingInfo.isEmpty()) {
 			response.setStatusCode(210);
 			response.setMessage("All the flight booking information retrieved successfully.");
 			response.setDescription("All the flight booking information retrieved successfully for userId : " + userId);
@@ -59,7 +62,7 @@ public class FlightBookingController {
 
 			response.setStatusCode(401);
 			response.setMessage("No booking found!");
-			response.setDescription(" No booking found " + userId);
+			response.setDescription(" No booking found with UserId:" + userId);
 
 		}
 		return response;
@@ -72,8 +75,10 @@ public class FlightBookingController {
 		BookingResponse response = new BookingResponse();
 		if (isDeleted) {
 			response.setStatusCode(201);
-			response.setMessage("Congratulation! Flight booking cancelled successfully. We will refund your payment within 3 working days. ");
-			response.setDescription("Congratulation! Flight booking cancelled successfully. We will refund your payment within 3 working days ");
+			response.setMessage(
+					"Congratulation! Flight booking cancelled successfully. We will refund your payment within 3 working days. ");
+			response.setDescription(
+					"Congratulation! Flight booking cancelled successfully. We will refund your payment within 3 working days ");
 		} else {
 			response.setStatusCode(401);
 			response.setMessage("Oops! Flight booking can not be cancelled.");

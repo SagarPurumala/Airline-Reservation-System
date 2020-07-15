@@ -1,9 +1,0 @@
-package com.javafullstackfeb.airlinereservationsystem.service;
-
-import com.jfsfeb.airlinereservationsystemspringboot.beans.AirlineExecutiveBeans;
-
-public interface AirlineExecutiveService {
-
-	public AirlineExecutiveBeans viewFlightOccupancy(String flightNumber);
-
-}
