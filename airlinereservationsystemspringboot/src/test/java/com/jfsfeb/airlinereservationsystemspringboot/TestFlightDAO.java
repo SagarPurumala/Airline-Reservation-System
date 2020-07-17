@@ -22,11 +22,11 @@ public class TestFlightDAO {
 	public void addFlightTest() {
 
 		FlightDetails flightInformation = new FlightDetails();
-		flightInformation.setFlightNumber("123ab");
+		flightInformation.setFlightNumber("20001");
 		flightInformation.setAirline("Indigo");
 		flightInformation.setDepartureTime("11:30 AM");
 		flightInformation.setArrivalTime("12:00 AM");
-		flightInformation.setArrivalCity("Lucknow");
+		flightInformation.setArrivalCity("Mumbai");
 		flightInformation.setDepartureCity("Delhi");
 		flightInformation.setBussinessClassFare(2000);
 		flightInformation.setFirstClassSeats(2);

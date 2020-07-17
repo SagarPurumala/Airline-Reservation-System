@@ -23,12 +23,12 @@ public class UserDAOTest {
 	@Test
 	public void registerTest() {
 		UserDetails userBean = new UserDetails();
-		userBean.setUserFirstName("Sandeep");
-		userBean.setUserLastName("Tiwari");
+		userBean.setUserFirstName("Sagar");
+		userBean.setUserLastName("Purumala");
 		userBean.setUserEmail("admin@gmail.com");
 		userBean.setUserContact(9582848408l);
-		userBean.setUserId("sandy123");
-		userBean.setUserPassword("sandy123");
+		userBean.setUserId("sagar12345");
+		userBean.setUserPassword("sagar@123");
 		userBean.setUserRole("admin");
 		//dao.registerByAdmin(userBean);
 		assertEquals(true, dao.registerByAdmin(userBean));
@@ -36,7 +36,7 @@ public class UserDAOTest {
 	
 //	@Test
 //	public void userLoginTest() {
-//		String actual = dao.userLogin("Sandy1", "sandy12345");
+//		String actual = dao.userLogin("sagar12345", "sagar@123");
 //		assertEquals("user", actual);
 //	}
 //	
@@ -45,11 +45,6 @@ public class UserDAOTest {
 //		String actual = dao.userLogin("admin1", "Admin@123");
 //		assertEquals("admin", actual);
 //	}
-	
-//	@Test
-//	public void executiveLoginTest1() {
-//		String actual = dao.userLogin("Ashu", "acer12");
-//		assertEquals("exe", actual);
-//	}
+
 
 }
