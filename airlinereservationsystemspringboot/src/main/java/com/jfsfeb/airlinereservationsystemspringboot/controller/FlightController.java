@@ -102,7 +102,7 @@ public class FlightController {
 
 			response.setStatusCode(401);
 			response.setMessage("Failed");
-			response.setDescription(" Unable to fetch flights. Check whether you have entered correct details.");
+			response.setDescription(" Unable to fetch flights. No Flights found in this route .");
 		}
 		return response;
 

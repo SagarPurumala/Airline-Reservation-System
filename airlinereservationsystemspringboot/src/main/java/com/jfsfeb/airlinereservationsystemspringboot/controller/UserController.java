@@ -21,6 +21,7 @@ public class UserController {
 	
 	@PostMapping("/registerUser")
 	public AirlineResponse registerUser(@RequestBody UserDetails userBean) {
+	
 		boolean isAdded = service.registerUser(userBean);
 		if(isAdded) {
 			response.setStatus(200);
