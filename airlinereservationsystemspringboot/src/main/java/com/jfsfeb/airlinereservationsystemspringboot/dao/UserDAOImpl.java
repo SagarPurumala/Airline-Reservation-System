@@ -23,19 +23,19 @@ public class UserDAOImpl implements UserDAO {
 	public boolean registerUser(UserDetails userBean) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction();
-		boolean isRegistered = false;
+		
 		try {
 			entityTransaction.begin();
 			String role = "user";
 			userBean.setUserRole(role);
 			entityManager.persist(userBean);
 			entityTransaction.commit();
-			isRegistered=true;
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		entityManager.close();
-		return isRegistered;
+		return false;
 	}
 
 	//Authentication of all type of users(customer,admin,executive)

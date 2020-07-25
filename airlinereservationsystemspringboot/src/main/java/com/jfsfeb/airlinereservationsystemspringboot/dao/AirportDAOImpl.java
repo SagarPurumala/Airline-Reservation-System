@@ -21,19 +21,17 @@ public class AirportDAOImpl implements AirportDAO {
 	public boolean addAirport(AirportBeans airport) {
 		EntityManager manager = emf.createEntityManager();
 		EntityTransaction tx = manager.getTransaction();
-
-		boolean isAdded = false;
 		try {
 			tx.begin();
 			manager.persist(airport);
 			tx.commit();				
-			isAdded = true;	
+			return true;	
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		manager.close();
-		return isAdded;
+		return false;
 	}
 
 	@Override

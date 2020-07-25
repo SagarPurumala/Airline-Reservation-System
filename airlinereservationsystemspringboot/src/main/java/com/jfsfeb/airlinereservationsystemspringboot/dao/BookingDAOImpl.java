@@ -129,16 +129,16 @@ public class BookingDAOImpl implements BookingDAO {
 			if (isDeleted) {
 				flightInfo = entityManager.find(FlightDetails.class, flightNo);
 				int firstClass = flightInfo.getFirstClassSeats();
-				System.err.println(firstClass);
+				
 				int bussiness = flightInfo.getBussinessClassSeats();
-				System.err.println(bussiness);
+				
 				if (classType1.equalsIgnoreCase("Bussiness")) {
 					bussiness = bussiness + passenger1;
-					System.err.println(bussiness);
+					
 					flightInfo.setBussinessClassSeats(bussiness);
 				} else if (classType1.equalsIgnoreCase("First Class")) {
 					firstClass = firstClass + passenger1;
-					System.err.println(firstClass);
+					
 					flightInfo.setFirstClassSeats(firstClass);
 				} else {
 					return false;

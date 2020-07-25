@@ -1,8 +1,10 @@
 package com.jfsfeb.airlinereservationsystemspringboot;
 
-import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,35 +18,27 @@ import com.jfsfeb.airlinereservationsystemspringboot.dao.UserDAO;
 public class UserDAOTest {
 	
 	@Autowired
-	//@Qualifier("dao")
 	private UserDAO dao;
 	
-	//@Ignore
 	@Test
-	public void registerTest() {
+	public void registerByAdminTest() {
 		UserDetails userBean = new UserDetails();
 		userBean.setUserFirstName("Sagar");
 		userBean.setUserLastName("Purumala");
 		userBean.setUserEmail("admin@gmail.com");
 		userBean.setUserContact(9582848408l);
-		userBean.setUserId("sagar12345");
-		userBean.setUserPassword("sagar@123");
+		userBean.setUserId("sagar123");
+		userBean.setUserPassword("sagar@12");
 		userBean.setUserRole("admin");
-		//dao.registerByAdmin(userBean);
-		assertEquals(true, dao.registerByAdmin(userBean));
+		boolean exepected=dao.registerByAdmin(userBean);
+		assertEquals(true,exepected);
 	}
 	
-//	@Test
-//	public void userLoginTest() {
-//		String actual = dao.userLogin("sagar12345", "sagar@123");
-//		assertEquals("user", actual);
-//	}
-//	
-//	@Test
-//	public void adminLoginTest1() {
-//		String actual = dao.userLogin("admin1", "Admin@123");
-//		assertEquals("admin", actual);
-//	}
-
+	@Test
+	public void userLoginTest() {
+		UserDetails actual = dao.userLogin("sagar123", "sagar@12");
+		Assertions.assertNotNull(actual);
+		
+	}
 
 }
